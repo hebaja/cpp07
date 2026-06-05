@@ -1,6 +1,6 @@
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = template
+NAME = array
 SRC = main.cpp
 SRC_DIR = .
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC))
