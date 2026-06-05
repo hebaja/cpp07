@@ -1,46 +1,81 @@
+#include "whatever.hpp"
 #include <iostream>
 
-template <typename T>
-
-void	swap(T &a, T &b)
+class	Human
 {
-	T	swap;
+private:
+	std::string name;
+	int	age;
 
-	swap = a;
-	a = b;
-	b = swap;
-}
+public:
+	Human() : name("default"), age(0){};
+	Human(std::string name, int age) : name(name), age(age){};
+	~Human(){};
 
-template <typename T>
+	bool operator<(Human &other)
+	{
+		return (this->age < other.age);
+	}
+	
+	bool operator>(Human &other)
+	{
+		return (this->age > other.age);
+	}
 
-T	min(T a, T b)
+	std::string getName() const
+	{
+		return name;
+	}
+
+	int getAge() const
+	{
+		return age;
+	}
+};
+
+std::ostream &operator<<(std::ostream &os, const Human &h)
 {
-	return (a < b ? a : b);
-}
-
-template <typename T>
-
-T	max(T a, T b)
-{
-	return (a > b ? a : b);
+	os << "Dog's age: "<< h.getAge() << " | Dog's name: " << h.getName();
+    return (os);
 }
 
 int	main()
 {
-	int	a = 2;
-	int	b = 3;
+	{
+		int	a = 2;
+		int	b = 3;
 
-	::swap(a, b);
-	std::cout << "a = " << a << ", b = " << b << std::endl; 
-	std::cout << "min(a, b) = " << min(a, b) << std::endl;
-	std::cout << "max(a, b) = " << max(a, b) << std::endl;
+		::swap(a, b);
+		std::cout << "a = " << a << ", b = " << b << std::endl; 
+		std::cout << "min(a, b) = " << min(a, b) << std::endl;
+		std::cout << "max(a, b) = " << max(a, b) << std::endl;
 
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min(c, d) = " << ::min( c, d ) << std::endl;
-	std::cout << "max(c, d) = " << ::max( c, d ) << std::endl;
+		std::string c = "chaine1";
+		std::string d = "chaine2";
+		::swap(c, d);
+		std::cout << "c = " << c << ", d = " << d << std::endl;
+		std::cout << "min(c, d) = " << ::min( c, d ) << std::endl;
+		std::cout << "max(c, d) = " << ::max( c, d ) << std::endl;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << "::: CLASS :::" << std::endl;
+		Human a("Serumaninho", 8); 
+		Human b("Caramelo", 5);
+		std::cout << "Dog's age: " << a.getAge() << " | Dog's name: " << a.getName() << std::endl;
+		std::cout << "Dog's age: " << b.getAge() << " | Dog's name: " << b.getName() << std::endl;
+		::swap(a, b);
+		std::cout << "Swapped dog's age: " << a.getAge() << " | Dog's name: " << a.getName() << std::endl;
+		std::cout << "Swapped dog's age: " << b.getAge() << " | Dog's name: " << b.getName() << std::endl;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << "::: CLASS :::" << std::endl;
+		Human a("Serumaninho", 8); 
+		Human b("Caramelo", 5);
+		std::cout << "min -> " << ::min(a, b) << std::endl;
+		std::cout << "max -> " << ::max(a, b) << std::endl;
+	}
 
 	return (0);
 }
