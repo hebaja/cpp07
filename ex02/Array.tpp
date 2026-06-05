@@ -1,4 +1,3 @@
-#include <stdexcept>
 template <typename T>
 Array<T>::Array() : n(0), _t(new T[n]()){}
 
