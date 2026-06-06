@@ -47,7 +47,7 @@ int	main()
 		int arr[size];
 		for (size_t i = 0; i < size; i++)
 			arr[i] = i;
-		iter(arr, size, function_int);
+		::iter(arr, size, function_int);
 		std::cout << std::endl;
 	}
 	{
@@ -56,7 +56,7 @@ int	main()
 		std::string arr[4] = {"C", "Java", "C++", "Kotlin"};
 		for (int i = 0; i < 4; i++)
 			std::cout << "String -> " << arr[i] << std::endl;
-		iter(arr, 4, function_string);		
+		::iter(arr, 4, function_string);		
 		for (int i = 0; i < 4; i++)
 			std::cout << "String -> " << arr[i] << std::endl;
 	}
@@ -72,7 +72,7 @@ int	main()
 		std::cout << std::endl;
 		std::cout << "::: CONST ARRAY :::" << std::endl;
 		const int arr[7] = {0, 1, 2, 3, 4, 5, 6};
-		iter(arr, 7, function_int);
+		::iter(arr, 7, function_int);
 		std::cout << std::endl;
 	}
 	return (0);
